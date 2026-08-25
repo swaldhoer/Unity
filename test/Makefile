@@ -18,6 +18,7 @@ CFLAGS += -Wno-switch-enum -Wno-double-promotion -Wno-poison-system-directories 
 CFLAGS += -Wno-covered-switch-default
 CFLAGS += -Wbad-function-cast -Wcast-qual -Wold-style-definition -Wshadow -Wstrict-overflow \
           -Wstrict-prototypes -Wswitch-default -Wundef
+CFLAGS += -Werror=sign-conversion
 #DEBUG = -O0 -g
 CFLAGS += $(DEBUG)
 UNITY_SUPPORT_64 = -D UNITY_SUPPORT_64

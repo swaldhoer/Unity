@@ -403,7 +403,7 @@ typedef UNITY_FLOAT_TYPE UNITY_FLOAT;
       #define UNITY_EXEC_TIME_START() Unity.CurrentTestStartTime = UNITY_CLOCK_MS()
       #define UNITY_EXEC_TIME_STOP() Unity.CurrentTestStopTime = UNITY_CLOCK_MS()
       #define UNITY_PRINT_EXEC_TIME() { \
-        UNITY_UINT execTimeMs = (Unity.CurrentTestStopTime - Unity.CurrentTestStartTime); \
+        UNITY_UINT execTimeMs = (UNITY_UINT)((unsigned long long)Unity.CurrentTestStopTime - (unsigned long long)Unity.CurrentTestStartTime); \
         UnityPrint(" ("); \
         UnityPrintNumberUnsigned(execTimeMs); \
         UnityPrint(" ms)"); \
@@ -415,7 +415,7 @@ typedef UNITY_FLOAT_TYPE UNITY_FLOAT;
       #define UNITY_EXEC_TIME_START() UNITY_GET_TIME(Unity.CurrentTestStartTime)
       #define UNITY_EXEC_TIME_STOP() UNITY_GET_TIME(Unity.CurrentTestStopTime)
       #define UNITY_PRINT_EXEC_TIME() { \
-        UNITY_UINT execTimeMs = (Unity.CurrentTestStopTime - Unity.CurrentTestStartTime); \
+        UNITY_UINT execTimeMs = (UNITY_UINT)((unsigned long long)Unity.CurrentTestStopTime - (unsigned long long)Unity.CurrentTestStartTime); \
         UnityPrint(" ("); \
         UnityPrintNumberUnsigned(execTimeMs); \
         UnityPrint(" ms)"); \
@@ -427,7 +427,7 @@ typedef UNITY_FLOAT_TYPE UNITY_FLOAT;
       #define UNITY_EXEC_TIME_START() UNITY_GET_TIME(Unity.CurrentTestStartTime)
       #define UNITY_EXEC_TIME_STOP() UNITY_GET_TIME(Unity.CurrentTestStopTime)
       #define UNITY_PRINT_EXEC_TIME() do { \
-        UNITY_UINT execTimeMs = (UNITY_UINT)((Unity.CurrentTestStopTime.tv_sec - Unity.CurrentTestStartTime.tv_sec) * 1000L); \
+        UNITY_UINT execTimeMs = (UNITY_UINT)(((unsigned long long)Unity.CurrentTestStopTime.tv_sec - (unsigned long long)Unity.CurrentTestStartTime.tv_sec) * 1000L); \
         execTimeMs += (UNITY_UINT)((Unity.CurrentTestStopTime.tv_nsec - Unity.CurrentTestStartTime.tv_nsec) / 1000000L); \
         UnityPrint(" ("); \
         UnityPrintNumberUnsigned(execTimeMs); \
